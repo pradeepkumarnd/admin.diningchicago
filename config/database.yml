@@ -1,0 +1,28 @@
+development: &default
+  adapter: mysql2
+  encoding: utf8
+  host: localhost
+  port: 3306
+  database:  dinchi_development_temp
+  username: <%= ENV['DINCHI_DATABASE_USERNAME'] %>
+  password: <%= ENV['DINCHI_DATABASE_PASSWORD'] %>
+  pool: 10
+  timeout: 86400
+  reconnect: true
+
+test: &test
+  <<: *default
+  database: dinchi_test
+
+staging:
+  <<: *default
+  database: dinchi_staging
+
+production:
+  <<: *default
+  host: <%= ENV['DINCHI_DATABASE_HOST'] %>
+  port: 3306
+  database: <%= ENV['DINCHI_DATABASE_NAME'] %>
+
+cucumber:
+  <<: *test

@@ -1,0 +1,36 @@
+# s3 and local defines where files are stored
+s3: &s3
+  defaults:
+    storage: :s3
+    default_url: '/images/icons/:class_:style_missing.png'
+    url: '/system/:class/:attachment/:id_partition/:style/:basename.:extension'
+
+
+local: &local_files
+  defaults:
+    storage: :filesystem
+    default_url: '/images/icons/:class_:style_missing.png'
+    url: '/system/:class/:attachment/:id_partition/:style/:basename.:extension'
+    path: ':rails_root/public/system/:class/:attachment/:id_partition/:style/:basename.:extension'
+
+# per environment config
+
+development: &development
+  <<: *local_files
+  options:
+    command_path: /usr/local/bin
+
+production: &production
+  <<: *local_files
+  options:
+    command_path: /usr/bin
+    swallow_stderr: false
+
+staging:
+  <<: *local_files
+  options:
+    command_path: /usr/bin
+    swallow_stderr: false
+
+test:
+  <<: *development
