@@ -19,12 +19,13 @@ gem 'spring',        group: :development
 
 gem 'settingslogic'
 
-gem 'dinchi-models', :git => 'git@bitbucket.org:srosu/dinchi-models.git',:branch => 'master'
+gem 'dinchi-models'#, :git => 'git@bitbucket.org:srosu/dinchi-models.git',:branch => 'master'
 gem 'bugsnag'
 
-group :development do
-  gem 'bower-rails'
+gem 'angular-rails-templates'
+gem 'bower-rails'
 
+group :development do
   gem 'traceroute'
   # gem 'bullet'
   gem 'brakeman'
@@ -55,10 +56,11 @@ group :test do
   gem 'rb-fsevent'
   gem 'faker'
   gem 'capybara'
+  gem 'selenium-webdriver'
   gem 'launchy'
   gem 'database_cleaner'
   gem 'vcr'
-  gem 'webmock'
+  # gem 'webmock'
   gem 'cucumber-rails', :require => false
 end
 

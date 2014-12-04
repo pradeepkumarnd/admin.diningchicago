@@ -1,22 +1,3 @@
-GIT
-  remote: git@bitbucket.org:srosu/dinchi-models.git
-  revision: b6b7be3747905843f84c284d5a1c5692705cc80c
-  branch: master
-  specs:
-    dinchi-models (0.0.37)
-      aasm (~> 3)
-      acts-as-taggable-on (~> 3)
-      aws-sdk
-      cancan (~> 1)
-      devise (~> 3)
-      elasticsearch-model
-      mysql2 (~> 0.3)
-      omniauth-facebook (~> 2)
-      omniauth-google-oauth2 (~> 0.2)
-      paperclip (~> 4.2)
-      rake
-      rmagick (~> 2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -50,6 +31,10 @@ GEM
     acts-as-taggable-on (3.4.2)
       activerecord (>= 3.2, < 5)
     addressable (2.3.6)
+    angular-rails-templates (0.1.3)
+      railties (>= 3.1)
+      sprockets
+      tilt
     arel (5.0.1.20140414130214)
     aws-sdk (1.59.0)
       aws-sdk-v1 (= 1.59.0)
@@ -99,6 +84,8 @@ GEM
       xpath (~> 2.0)
     celluloid (0.16.0)
       timers (~> 4.0.0)
+    childprocess (0.5.5)
+      ffi (~> 1.0, >= 1.0.11)
     chronic (0.10.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -113,8 +100,6 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     colorize (0.7.3)
-    crack (0.4.2)
-      safe_yaml (~> 1.0.0)
     cucumber (1.3.17)
       builder (>= 2.1.2)
       diff-lcs (>= 1.1.3)
@@ -136,6 +121,19 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    dinchi-models (0.0.37)
+      aasm (~> 3)
+      acts-as-taggable-on (~> 3)
+      aws-sdk
+      cancan (~> 1)
+      devise (~> 3)
+      elasticsearch-model
+      mysql2 (~> 0.3)
+      omniauth-facebook (~> 2)
+      omniauth-google-oauth2 (~> 0.2)
+      paperclip (~> 4.2)
+      rake
+      rmagick (~> 2)
     elasticsearch (1.0.6)
       elasticsearch-api (= 1.0.6)
       elasticsearch-transport (= 1.0.6)
@@ -298,7 +296,7 @@ GEM
       sexp_processor (~> 4.0)
     ruby_parser (3.5.0)
       sexp_processor (~> 4.1)
-    safe_yaml (1.0.4)
+    rubyzip (1.1.6)
     sass (3.2.19)
     sass-rails (4.0.5)
       railties (>= 4.0.0, < 5.0)
@@ -308,6 +306,11 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    selenium-webdriver (2.44.0)
+      childprocess (~> 0.5)
+      multi_json (~> 1.0)
+      rubyzip (~> 1.0)
+      websocket (~> 1.0)
     settingslogic (2.0.9)
     sexp_processor (4.4.4)
     slim (2.1.0)
@@ -352,9 +355,7 @@ GEM
     vcr (2.9.3)
     warden (1.2.3)
       rack (>= 1.0)
-    webmock (1.20.4)
-      addressable (>= 2.3.6)
-      crack (>= 0.3.2)
+    websocket (1.2.1)
     whenever (0.9.4)
       chronic (>= 0.6.3)
     xpath (2.0.0)
@@ -364,6 +365,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  angular-rails-templates
   bower-rails
   brakeman
   bugsnag
@@ -377,7 +379,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   cucumber-rails
   database_cleaner
-  dinchi-models!
+  dinchi-models
   factory_girl
   faker
   guard
@@ -392,6 +394,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 4)
   sdoc (~> 0.4.0)
+  selenium-webdriver
   settingslogic
   spring
   terminal-notifier-guard
@@ -400,5 +403,4 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   unicorn
   vcr
-  webmock
   whenever

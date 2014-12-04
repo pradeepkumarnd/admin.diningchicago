@@ -36,4 +36,16 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  config.paperclip_defaults = {
+    convert_options: { all: '-quality 70 -strip -trim' },
+    storage: :s3,
+    s3_credentials: "#{Rails.root}/config/s3.yml",
+    s3_permissions: 'public-read',
+    bucket: 'dinchi-assets',
+    url: ':s3_alias_url',
+    path: ':class/:attachment/:id_partition/:style/:filename',
+    s3_host_alias: 'assets.diningchicago.com',
+    s3_protocol: :http,
+    s3_headers: { 'Expires' => (Time.now + (60 * 60 * 24 * 30 * 12)).httpdate }
+  }
 end
