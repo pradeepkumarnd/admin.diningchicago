@@ -1,12 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-ng-app="MetronicApp">
 <head>
-  <title>AdminDiningchicago</title>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <title data-ng-bind="'Metronic AngularJS | ' + $state.current.data.pageTitle"></title>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="" name="description"/>
+  <meta content="" name="author"/>
+  <link rel="shortcut icon" href="favicon.ico"/>
+
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
+
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+
+  <!-- BEGIN DYMANICLY LOADED CSS FILES(all plugin and page related styles must be loaded between GLOBAL and THEME css files ) -->
+
+  <!-- END DYMANICLY LOADED CSS FILES -->
 </head>
-<body>
-  <%= yield %>
+
+<body ng-controller="AppController" class="page-header-fixed page-sidebar-closed-hide-logo page-quick-sidebar-over-content page-on-load" ng-class="{'page-container-bg-solid': settings.layout.pageBodySolid, 'page-sidebar-closed': settings.layout.pageSidebarClosed}">
+  <!-- BEGIN PAGE SPINNER -->
+  <div ng-spinner-bar class="page-spinner-bar">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+  </div>
+  <!-- END PAGE SPINNER -->
+
+  <!-- BEGIN HEADER -->
+  <div class="page-header navbar navbar-fixed-top">
+    <%= render 'layouts/partials/header' %>
+  </div>
+  <!-- END HEADER -->
+
+  <div class="clearfix"></div>
+  <!-- BEGIN CONTAINER -->
+  <div class="page-container">
+    <!-- BEGIN SIDEBAR -->
+    <%= render 'layouts/partials/sidebar' %>
+    <!-- END SIDEBAR -->
+
+    <!-- BEGIN CONTENT -->
+    <div class="page-content-wrapper">
+      <div class="page-content">
+        <!-- BEGIN ACTUAL CONTENT -->
+        <div ui-view class="fade-in-up"></div>
+        <!-- END ACTUAL CONTENT -->
+      </div>
+    </div>
+    <!-- END CONTENT -->
+  </div>
+  <!-- END CONTAINER -->
+
+  <!-- BEGIN FOOTER -->
+  <div class="page-footer">
+    <%= render 'layouts/partials/footer' %>
+  </div>
+
+  <!-- END FOOTER -->
+
+  <script type="text/javascript">
+    /* Init Metronic's core jquery plugins and layout scripts */
+    $(document).ready(function() {
+      Metronic.init(); // Run metronic theme
+      Metronic.setAssetsPath('metronic/'); // Set the assets folder path
+      Layout.init();
+    });
+  </script>
 </body>
 </html>

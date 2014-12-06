@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  root to: 'layouts#index'
+  # get '*path' => 'layouts#nothing'
+  get '*path' => 'layouts#index'
 end

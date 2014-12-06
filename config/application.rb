@@ -9,7 +9,10 @@ Bundler.require(*Rails.groups)
 module AdminDiningchicago
   class Application < Rails::Application
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
+
     config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff)$)
+
+    config.serve_static_assets = true
 
     config.generators do |g|
       g.test_framework :rspec,

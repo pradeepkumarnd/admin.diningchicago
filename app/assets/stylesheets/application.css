@@ -11,6 +11,18 @@
  * file per style scope.
  *
  *= require bootstrap-sass-official
- * require metronic/admin/layout/layout
+ *= require font-awesome/css/font-awesome
+ *= require simple-line-icons/css/simple-line-icons
+ *= require jquery.uniform/www/stylesheets/multiple-themes
+ *= require bootstrap-switch/dist/css/bootstrap3/bootstrap-switch
+
+ *= require metronic/global/components
+ *= require metronic/global/plugins
+ *= require metronic/admin/layout/layout
+ *= require metronic/admin/layout/themes/darkblue
+
+*= require morris/morris
+*= require tasks
+
  *= require_self
  */

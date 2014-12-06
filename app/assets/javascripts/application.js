@@ -10,11 +10,36 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require turbolinks
+//= require jquery/dist/jquery
+//= require jquery-ujs/src/rails
+//= require bootstrap/dist/js/bootstrap
+//= require bootstrap-hover-dropdown/bootstrap-hover-dropdown
+//= require jquery-slimscroll/jquery.slimscroll
+//= require blockui/jquery.blockUI
+//= require jquery-cookie/jquery.cookie
+//= require jquery.uniform/jquery.uniform
+//= require bootstrap-switch/dist/js/bootstrap-switch
+
 //= require angular/angular
-//= require angular-route/angular-route
+//= require angular-sanitize/angular-sanitize
+//= require angular-touch/angular-touch
+//= require angular-ui-router/release/angular-ui-router
+//= require oclazyload/dist/ocLazyLoad
+//= require angular-bootstrap/ui-bootstrap-tpls
+
 //= require angular-rails-templates
 //= require_tree ./templates
+
 //= require app
+//= require directives
+//= require_tree ./controllers
+
+//= require metronic/global/scripts/metronic
+//= require metronic/admin/layout/scripts/layout
+//= require metronic/admin/layout/scripts/demo
+//= require metronic/admin/pages/scripts/index3
+//= require metronic/admin/pages/scripts/tasks
+
+//= require morris/morris
+//= require raphael/raphael
+//= require jquery.sparkline.min
