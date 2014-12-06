@@ -15,14 +15,16 @@
  *= require simple-line-icons/css/simple-line-icons
  *= require jquery.uniform/www/stylesheets/multiple-themes
  *= require bootstrap-switch/dist/css/bootstrap3/bootstrap-switch
+ *= require select2/select2
+ *= require bootstrap-datepicker/css/datepicker3
 
  *= require metronic/global/components
  *= require metronic/global/plugins
  *= require metronic/admin/layout/layout
  *= require metronic/admin/layout/themes/darkblue
 
-*= require morris/morris
-*= require tasks
+ *= require morris/morris
+ *= require tasks
 
  *= require_self
  */

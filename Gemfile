@@ -23,6 +23,7 @@ gem 'bugsnag'
 
 gem 'angular-rails-templates'
 gem 'bower-rails'
+gem 'rabl'
 
 group :development do
   gem 'traceroute'

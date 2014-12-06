@@ -1,0 +1,180 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+  <ul class="page-breadcrumb">
+    <li>
+      <i class="fa fa-home"></i>
+      <a href="#/dashboard">Home</a>
+      <i class="fa fa-angle-right"></i>
+    </li>
+    <li>
+      <a href="#">Restaurants</a>
+    </li>
+  </ul>
+</div>
+<h3 class="page-title">
+  Restaurants <small>management of all restaurants from all sites</small>
+</h3>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div class="row" ng-controller="RestaurantsController">
+  <div class="col-md-12">
+    <!-- Begin: life time stats -->
+    <div class="portlet">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="fa fa-shopping-cart"></i>Restaurant Listing
+        </div>
+        <div class="actions">
+          <button class="btn btn-sm red filter-cancel"><i class="fa fa-times"></i> Reset</button>
+          <a href="#" class="btn default yellow-stripe">
+          <i class="fa fa-plus"></i>
+          <span class="hidden-480">New Restaurant</span>
+          </a>
+          <div class="btn-group">
+            <a class="btn default yellow-stripe" href="#" data-toggle="dropdown">
+            <i class="fa fa-share"></i>
+            <span class="hidden-480">Tools </span>
+            <i class="fa fa-angle-down"></i>
+            </a>
+            <ul class="dropdown-menu pull-right">
+              <li>
+                <a href="#">
+                Export to Excel </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="table-container">
+          <div class="table-actions-wrapper">
+            <span>
+            </span>
+            <select class="table-group-action-input form-control input-inline input-small input-sm">
+              <option value="">Select...</option>
+              <option value="published">Published</option>
+              <option value="registered">Registered</option>
+            </select>
+            <button class="btn btn-sm yellow table-group-action-submit"><i class="fa fa-check"></i> Submit</button>
+          </div>
+          <table class="table table-striped table-bordered table-hover" id="datatable_ajax">
+            <thead>
+              <tr role="row" class="heading">
+                <th width="15%">
+                  Name
+                </th>
+                <th width="5%">
+                  State
+                </th>
+                <th width="5%">
+                  Payed
+                </th>
+                <th width="5%">
+                  US State
+                </th>
+                <th width="8%">
+                  Neighborhood
+                </th>
+                <th width="5%">
+                  Region
+                </th>
+                <th width="4%">
+                  Opentable id
+                </th>
+                <th width="4%">
+                  Cuisines
+                </th>
+                <th width="4%">
+                  Amenities
+                </th>
+                <th width="4%">
+                  Closed
+                </th>
+                <th width="5%">
+                  Created at
+                </th>
+              </tr>
+              <tr role="row" class="filter">
+                <td>
+                  <input type="text" class="form-control form-filter input-sm" name="restaurant_name">
+                </td>
+                <td>
+                  <select name="status" ng-model="status" class="form-control form-filter input-sm">
+                    <option value="">Select...</option>
+                    <option value="published">Published</option>
+                    <option value="registered">Registered</option>
+                  </select>
+                </td>
+                <td>
+                  <select name="payed" class="form-control form-filter input-sm">
+                    <option value="">Select...</option>
+                    <option value="true">Payed</option>
+                    <option value="false">Not payed</option>
+                  </select>
+                </td>
+                <td>
+                  <select name="us_state" class="form-control form-filter input-sm">
+                    <option value="">Select...</option>
+                    <option value="IL">IL</option>
+                    <option value="NY">NY</option>
+                  </select>
+                </td>
+                <td>
+                  <input type="text" class="form-control form-filter input-sm" name="neighbourhood">
+                </td>
+                <td>
+                  <input type="text" class="form-control form-filter input-sm" name="region">
+                </td>
+                <td>
+                  <input type="text" class="form-control form-filter input-sm" name="opentable_id">
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                  <select name="closed" class="form-control form-filter input-sm">
+                    <option value="">Select...</option>
+                    <option value="true">Closed</option>
+                    <option value="false">Opened</option>
+                  </select>
+                </td>
+                <td>
+                  <div class="input-group date date-picker margin-bottom-5" data-date-format="dd/mm/yyyy">
+                    <input type="text" class="form-control form-filter input-sm" readonly name="created_at_from" placeholder="From">
+                    <span class="input-group-btn">
+                    <button class="btn btn-sm default" type="button"><i class="fa fa-calendar"></i></button>
+                    </span>
+                  </div>
+                  <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
+                    <input type="text" class="form-control form-filter input-sm" readonly name="created_at_to" placeholder="To">
+                    <span class="input-group-btn">
+                    <button class="btn btn-sm default" type="button"><i class="fa fa-calendar"></i></button>
+                    </span>
+                  </div>
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="rest in restaurants">
+                <td>{{rest.name}}</td>
+                <td>{{rest.state}}</td>
+                <td>{{rest.payed}}</td>
+                <td>{{rest.us_state}}</td>
+                <td>{{rest.neighborhood}}</td>
+                <td>{{rest.region}}</td>
+                <td>{{rest.opentable_id}}</td>
+                <td>{{rest.cuisines}}</td>
+                <td>{{rest.amenities}}</td>
+                <td>{{rest.closed}}</td>
+                <td>{{rest.created_at}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- End: life time stats -->
+  </div>
+</div>
+<!-- END MAIN CONTENT -->

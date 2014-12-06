@@ -19,12 +19,14 @@
 //= require jquery-cookie/jquery.cookie
 //= require jquery.uniform/jquery.uniform
 //= require bootstrap-switch/dist/js/bootstrap-switch
+//= require select2/select2
+
+//= require bootstrap-datepicker/js/bootstrap-datepicker
 
 //= require angular/angular
 //= require angular-sanitize/angular-sanitize
 //= require angular-touch/angular-touch
 //= require angular-ui-router/release/angular-ui-router
-//= require oclazyload/dist/ocLazyLoad
 //= require angular-bootstrap/ui-bootstrap-tpls
 
 //= require angular-rails-templates
