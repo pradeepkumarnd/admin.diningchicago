@@ -42,7 +42,8 @@
     $urlRouterProvider.otherwise '/dashboard'
 
     # Dashboard
-    $stateProvider.state 'dashboard',
+    $stateProvider
+    .state 'dashboard',
       url: '/dashboard'
       templateUrl: 'views/dashboard.html'
       data:
@@ -52,6 +53,12 @@
       url: '/restaurants'
       templateUrl: 'views/restaurants.html'
       controller: 'RestaurantsController'
+    .state 'restaurants.profile',
+      url: '/:permalink'
+      views:
+        '@':
+          templateUrl: 'views/restaurant.html'
+          controller: 'RestaurantController'
     .state 'other-sites',
       url: '/other-sites'
       templateUrl: 'views/other-sites.html'

@@ -28,3 +28,14 @@
 
  *= require_self
  */
+
+.dataTables_paginate, .dataTables_length, .dataTables_info {
+  display: inline-block;
+}
+
+
+/********************************START RESTAURANT PAGE********************************/
+#map {
+  height: 400px;
+}
+/**********************************END RESTAURANT PAGE********************************/

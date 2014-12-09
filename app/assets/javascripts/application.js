@@ -33,6 +33,7 @@
 //= require_tree ./templates
 
 //= require app
+//= require filters
 //= require directives
 //= require_tree ./controllers
 

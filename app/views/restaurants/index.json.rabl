@@ -8,15 +8,15 @@ child(@rows => :rows) do
   end
 
   node :us_state do |r|
-    r.address.state
+    r.address ? r.address.state : ''
   end
 
   node :neighborhood do |r|
-    r.address.neighbor
+    r.address ? r.address.neighbor : ''
   end
 
   node :region do |r|
-    r.address.region
+    r.address ? r.address.region : ''
   end
 
   node :cuisines do |r|
