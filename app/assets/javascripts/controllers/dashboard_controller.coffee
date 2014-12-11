@@ -1,4 +1,4 @@
-DinchiAdminApp.controller 'DashboardController', ($rootScope, $scope, $http, $timeout) ->
+DinchiAdminApp.controller 'DashboardCtrl', ($rootScope, $scope, $http, $timeout) ->
   $scope.$on '$viewContentLoaded', ->
     Metronic.initAjax()
     Index.init();

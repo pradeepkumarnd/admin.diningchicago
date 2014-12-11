@@ -1,27 +1,18 @@
-class @RestaurantCtrl extends @ScopeCtrl
+class @RestaurantHistoryCtrl extends @ScopeCtrl
   @register()
-  @inject '$rootScope', 'RestaurantSrv', '$stateParams', '$state'
+  @inject '$rootScope', 'RestaurantSrv', '$stateParams'
 
   initialize: ->
     @s.r = null
-    @s.tabs = [
-      {heading: 'Details', route: 'restaurant.details', active:false }
-      {heading: 'History', route: 'restaurant.history', active:false }
-    ]
-
     @$rootScope.settings.layout.pageBodySolid = false
     @$rootScope.settings.layout.pageSidebarClosed = true
     @loadRestaurant()
-    self = @
-    @s.$on '$stateChangeSuccess', ->
-      self.s.tabs.forEach (tab)->
-        tab.active = self.s.active(tab.route)
 
   loadRestaurant: ->
     self = @
     @RestaurantSrv.getRestaurant @$stateParams.permalink, (data, status)->
       self.s.r = data
-      # self.drawMap()
+      self.drawMap()
 
   publishedClass: ->
     if @s.r && @s.r.state == 'published' then 'success' else 'danger'
@@ -31,12 +22,6 @@ class @RestaurantCtrl extends @ScopeCtrl
 
   websiteLink: ->
     if @s.r && @s.r.website then "http://#{@s.r.website}" else ''
-
-  active: (route)->
-    @$state.is(route)
-
-  go: (route)->
-    @$state.go(route)
 
   drawMap: ->
     myLatlng = new google.maps.LatLng(@s.r.address.lat, @s.r.address.lng)

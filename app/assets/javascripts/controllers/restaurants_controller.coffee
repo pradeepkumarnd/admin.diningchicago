@@ -1,59 +1,63 @@
-DinchiAdminApp.controller 'RestaurantsController', ($rootScope, $scope, $http)->
-  $scope.restaurants = []
-  $scope.page = 1
-  $scope.total = 0
-  $scope.perPage = 20
-  $scope.perPageOptions = [20, 50, 100]
+class @RestaurantsCtrl extends @ScopeCtrl
+  @register()
+  @inject '$rootScope', 'RestaurantSrv'
 
-  # $scope.$on '$viewContentLoaded', ->
-  #   # TableAjax.init();
-  #   console.log 'Restaurants List Rendered'
-  # # set sidebar closed and body solid layout mode
+  initialize: ->
+    @s.restaurants = []
+    @s.page = 1
+    @s.total = 0
+    @s.perPage = 20
+    @s.perPageOptions = [20, 50, 100]
 
-  $scope.$watch 'page', (newVal, oldVal)->
-    $scope.refresh() if newVal != oldVal
+    @initWatch()
+    @refresh()
+    @$rootScope.settings.layout.pageBodySolid = false
+    @$rootScope.settings.layout.pageSidebarClosed = false
 
-  $scope.$watch 'perPage', (newVal, oldVal)->
-    if newVal != oldVal
-      if $scope.page != 1
-        $scope.page = 1
-      else
-        $scope.refresh()
+  initWatch: ->
+    self = @
+    @s.$watch 'page', (newVal, oldVal)->
+      self.refresh() if newVal != oldVal
 
-  $scope.totalPages = ()->
-    Math.floor(($scope.total + $scope.perPage - 1) / $scope.perPage)
+    @s.$watch 'perPage', (newVal, oldVal)->
+      if newVal != oldVal
+        if self.s.page != 1
+          self.s.page = 1
+        else
+          self.refresh()
 
-  $scope.refresh = ->
-    $http.get('/restaurants.json', {params: {page: $scope.page, per_page: $scope.perPage}})
-    .success (data, status, headers, config)->
-      angular.copy(data.rows, $scope.restaurants)
-      $scope.total = data.total
+  totalPages: ->
+    Math.floor((@s.total + @s.perPage - 1) / @s.perPage)
 
-  $scope.filtersActive = ->
+  refresh: ->
+    self = @
+    @RestaurantSrv.getRestaurants {page: @s.page, per_page: @s.perPage}, (data, status, headers, config)->
+      angular.copy(data.rows, self.s.restaurants)
+      self.s.total = data.total
+
+  filtersActive: ->
     false
 
-  $scope.isPublished = (rest)->
+  isPublished: (rest)->
     if rest.state == 'published' then true else false
 
-  $scope.isPayed = (rest)->
+  isPayed: (rest)->
     if rest.payed == 'payed' then true else false
 
-  $scope.closedClass = (rest)->
+  closedClass: (rest)->
     if rest.closed then 'warning' else 'info'
 
-  $scope.closedLabel = (rest)->
+  closedLabel: (rest)->
     if rest.closed then 'closed' else 'opened'
 
-  $scope.nextAvailable = ->
-    $scope.page < $scope.total / $scope.perPage
-  $scope.prevAvailable = ->
-    $scope.page > 1
-  $scope.next = ->
-    $scope.page = $scope.page + 1
-  $scope.previous = ->
-    $scope.page =  $scope.page - 1 if $scope.page > 1
+  nextAvailable: ->
+    @s.page < @s.total / @s.perPage
 
-  $scope.refresh()
-  $rootScope.settings.layout.pageBodySolid = false
-  $rootScope.settings.layout.pageSidebarClosed = false
-  console.log 'RestaurantsController'
+  prevAvailable: ->
+    @s.page > 1
+
+  next: ->
+    @s.page = @s.page + 1
+
+  previous: ->
+    @s.page =  @s.page - 1 if @s.page > 1

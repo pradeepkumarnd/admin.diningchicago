@@ -20,6 +20,7 @@
 //= require jquery.uniform/jquery.uniform
 //= require bootstrap-switch/dist/js/bootstrap-switch
 //= require select2/select2
+//= require lodash/dist/lodash
 
 //= require bootstrap-datepicker/js/bootstrap-datepicker
 
@@ -27,14 +28,19 @@
 //= require angular-sanitize/angular-sanitize
 //= require angular-touch/angular-touch
 //= require angular-ui-router/release/angular-ui-router
+//= require restangular/dist/restangular
+
 //= require angular-bootstrap/ui-bootstrap-tpls
 
 //= require angular-rails-templates
 //= require_tree ./templates
 
+//= require rang
 //= require app
+//= require app_controller
 //= require filters
 //= require directives
+//= require_tree ./services
 //= require_tree ./controllers
 
 //= require metronic/global/scripts/metronic

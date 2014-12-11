@@ -2,6 +2,7 @@
 @DinchiAdminApp = angular.module('DinchiAdminApp', [
   'ui.router'
   'ui.bootstrap'
+  'restangular'
   'templates'
   'ngSanitize'
 ])
@@ -23,15 +24,6 @@
     settings
 ]
 
-# Setup App Main Controller
-@DinchiAdminApp.controller 'AppController', [
-  '$scope'
-  '$rootScope'
-  ($scope, $rootScope) ->
-    $scope.$on '$viewContentLoaded', ->
-      Metronic.initComponents()
-]
-
 # Setup Rounting For All Pages
 @DinchiAdminApp.config [
   '$stateProvider'
@@ -48,22 +40,29 @@
       templateUrl: 'views/dashboard.html'
       data:
         pageTitle: 'Admin Dashboard Template'
-      controller: 'DashboardController'
+      controller: 'DashboardCtrl'
     .state 'restaurants',
       url: '/restaurants'
       templateUrl: 'views/restaurants.html'
-      controller: 'RestaurantsController'
-    .state 'restaurants.profile',
-      url: '/:permalink'
-      views:
-        '@':
-          templateUrl: 'views/restaurant.html'
-          controller: 'RestaurantController'
+      controller: 'RestaurantsCtrl'
+    .state 'restaurant',
+      url: '/restaurants/:permalink'
+      abstract: true
+      templateUrl: 'views/restaurant.html'
+      controller: 'RestaurantCtrl'
+    .state 'restaurant.details',
+      url: '/details'
+      templateUrl: 'views/restaurant_details.html'
+    .state 'restaurant.history',
+      url: '/history'
+      templateUrl: 'views/restaurant_history.html'
     .state 'other-sites',
       url: '/other-sites'
       templateUrl: 'views/other-sites.html'
-      controller: 'OtherSitesController'
+      controller: 'OtherSitesCtrl'
 ]
+
+@Rang.conf.app = @DinchiAdminApp
 
 # Init global settings and run the app
 @DinchiAdminApp.run [
