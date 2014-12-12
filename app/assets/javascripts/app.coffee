@@ -71,4 +71,11 @@
   '$state'
   ($rootScope, settings, $state) ->
     $rootScope.$state = $state # state to be accessed from view
+    $state.isRestaurant = ->
+      $rootScope.r?
+    $state.isRestaurantDashboard = ->
+      $state.isRestaurant() && $state.is('restaurant.details')
+    $state.isRestaurantHistory = ->
+      $state.isRestaurant() && $state.is('restaurant.history')
+
 ]

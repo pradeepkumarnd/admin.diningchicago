@@ -22,6 +22,7 @@
  *= require metronic/global/plugins
  *= require metronic/admin/layout/layout
  *= require metronic/admin/layout/themes/darkblue
+ *= require metronic/admin/pages/timeline
 
  *= require morris/morris
  *= require tasks

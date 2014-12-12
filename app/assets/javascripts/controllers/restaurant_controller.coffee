@@ -4,24 +4,31 @@ class @RestaurantCtrl extends @ScopeCtrl
 
   initialize: ->
     @s.r = null
+    @s.map = null
     @s.tabs = [
-      {heading: 'Details', route: 'restaurant.details', active:false }
-      {heading: 'History', route: 'restaurant.history', active:false }
+      {id: 1, heading: 'Details', route: 'restaurant.details', active:false, initialized: false }
+      {id: 2, heading: 'History', route: 'restaurant.history', active:false, initialized: false }
     ]
 
     @$rootScope.settings.layout.pageBodySolid = false
-    @$rootScope.settings.layout.pageSidebarClosed = true
+    @$rootScope.settings.layout.pageSidebarClosed = false
     @loadRestaurant()
     self = @
+    # @s.$state = @$state
     @s.$on '$stateChangeSuccess', ->
       self.s.tabs.forEach (tab)->
         tab.active = self.s.active(tab.route)
+
+    @s.$on '$viewContentLoaded', ->
+      self.drawMap() if self.s.tabs[0].active && self.restaurantLoaded
 
   loadRestaurant: ->
     self = @
     @RestaurantSrv.getRestaurant @$stateParams.permalink, (data, status)->
       self.s.r = data
-      # self.drawMap()
+      self.$rootScope.r = self.s.r
+      self.restaurantLoaded = true
+      self.drawMap() if self.s.tabs[0].active
 
   publishedClass: ->
     if @s.r && @s.r.state == 'published' then 'success' else 'danger'
@@ -39,11 +46,12 @@ class @RestaurantCtrl extends @ScopeCtrl
     @$state.go(route)
 
   drawMap: ->
+    return if @map
     myLatlng = new google.maps.LatLng(@s.r.address.lat, @s.r.address.lng)
     mapOptions =
       zoom: 15,
       center: myLatlng
-    map = new google.maps.Map(document.getElementById('map'), mapOptions)
+    @map = new google.maps.Map(document.getElementById('map'), mapOptions)
     marker = new google.maps.Marker
       position: myLatlng
-      map: map
+      map: @map
