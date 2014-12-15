@@ -8,6 +8,8 @@ class @RestaurantsCtrl extends @ScopeCtrl
     @s.total = 0
     @s.perPage = 20
     @s.perPageOptions = [20, 50, 100]
+    @$rootScope.r = null
+    console.log 'RESTAURANTS'
 
     @initWatch()
     @refresh()

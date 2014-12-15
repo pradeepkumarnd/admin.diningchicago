@@ -41,21 +41,39 @@
       data:
         pageTitle: 'Admin Dashboard Template'
       controller: 'DashboardCtrl'
+    # Restaurant Listing states
     .state 'restaurants',
       url: '/restaurants'
-      templateUrl: 'views/restaurants.html'
+      templateUrl: 'views/restaurants/list.html'
       controller: 'RestaurantsCtrl'
+    # Restaurant profile states
     .state 'restaurant',
       url: '/restaurants/:permalink'
       abstract: true
-      templateUrl: 'views/restaurant.html'
+      templateUrl: 'views/restaurants/show/header.html'
       controller: 'RestaurantCtrl'
     .state 'restaurant.details',
       url: '/details'
-      templateUrl: 'views/restaurant_details.html'
+      templateUrl: 'views/restaurants/show/details.html'
     .state 'restaurant.history',
       url: '/history'
-      templateUrl: 'views/restaurant_history.html'
+      templateUrl: 'views/restaurants/show/history.html'
+    # Edit restaurant states
+    .state 'edit-restaurant',
+      url: '/restaurants/:permalink/edit'
+      abstract: true
+      templateUrl: 'views/restaurants/edit/header.html'
+      controller: 'EditRestaurantCtrl'
+    .state 'edit-restaurant.profile',
+      url: '/profile'
+      templateUrl: 'views/restaurants/edit/profile.html'
+    .state 'edit-restaurant.pictures',
+      url: '/pictures'
+      templateUrl: 'views/restaurants/edit/pictures.html'
+    .state 'edit-restaurant.menus',
+      url: '/menus'
+      templateUrl: 'views/restaurants/edit/menus.html'
+    # Other sites
     .state 'other-sites',
       url: '/other-sites'
       templateUrl: 'views/other-sites.html'

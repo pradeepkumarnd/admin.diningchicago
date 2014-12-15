@@ -54,9 +54,13 @@
             | {{r.created_at | asDate | date : 'medium' }} </span>
           </div>
           <div class="actions">
-            <a href="#/restaurants" class="btn default yellow-stripe">
+            <a ui-sref="restaurants" class="btn default yellow-stripe">
               <i class="fa fa-angle-left"></i>
               <span class="hidden-480">Back</span>
+            </a>
+            <a ui-sref="edit-restaurant.profile({permalink: r.permalink})" class="btn default blue-stripe">
+              <i class="fa fa-edit"></i>
+              <span class="hidden-480">Edit</span>
             </a>
             <div class="btn-group">
               <a class="btn default yellow-stripe dropdown-toggle" href="#" data-toggle="dropdown">
