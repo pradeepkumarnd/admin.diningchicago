@@ -28,20 +28,21 @@
 //= require angular-sanitize/angular-sanitize
 //= require angular-touch/angular-touch
 //= require angular-ui-router/release/angular-ui-router
+//= require checklist-model/checklist-model
 //= require restangular/dist/restangular
 
 //= require angular-bootstrap/ui-bootstrap-tpls
 
+//= require rang
+//= require app.module
+//= require app.config
+//= require app.router
+//= require app_controller
+//= require_tree ./components
+//= require_tree ./features
+
 //= require angular-rails-templates
 //= require_tree ./templates
-
-//= require rang
-//= require app
-//= require app_controller
-//= require filters
-//= require directives
-//= require_tree ./services
-//= require_tree ./controllers
 
 //= require metronic/global/scripts/metronic
 //= require metronic/admin/layout/scripts/layout
